@@ -21,12 +21,12 @@ export default function Navigation() {
     { label: "Maps Wisata", href: "#wisata", isLink: false },
     {
       label: "Sejarah Garotan",
-      href: "https://sejarah-dukuh-garotan.vercel.app",
+      href: "https://sejarah.garotanmanunggal.web.id",
       isLink: true,
     },
     {
       label: "Data Penduduk",
-      href: "https://data-penduduk-garotan.vercel.app",
+      href: "https://penduduk.garotanmanunggal.web.id",
       isLink: true,
     },
     { label: "Kontak", href: "#contact", isLink: false },
