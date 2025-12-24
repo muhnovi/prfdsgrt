@@ -38,7 +38,7 @@ export default function About() {
           <div className="space-y-6">
             {/* <h3 className="text-2xl font-bold text-foreground">Sejarah dan Budaya</h3> */}
             <p className="text-muted-foreground leading-relaxed">
-              Dukuh Garotan berlokasi di Kalurahan Bndung, Kapanewon Semin, Gunung Kidul, Yogyakarta, dengan kekayaan budaya dan tradisi lokal yang
+              Dukuh Garotan berlokasi di Kalurahan Bendung, Kapanewon Semin, Gunung Kidul, Yogyakarta, dengan kekayaan budaya dan tradisi lokal yang
               masih dijaga hingga saat ini. Masyarakat kami berkomitmen untuk melestarikan warisan budaya Indonesia.
             </p>
             <p className="text-muted-foreground leading-relaxed">
