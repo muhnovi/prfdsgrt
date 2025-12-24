@@ -21,7 +21,7 @@ export const newsData: NewsItem[] = [
       "UMKM ini dirintis sejak tahun 1992 dengan modal awal sebesar Rp50.000 dan terus berkembang hingga saat ini.\n\nJenis usaha yang dijalankan meliputi produksi aneka snack tradisional antara lain keripik pisang gurih, keripik pisang manis, marning jagung gurih, marning pedas manis, serta manggleng gurih dan manggleng manis. Selain itu, UMKM ini juga memproduksi lemper, risol, sarang burung (tahu isi telur puyuh), nogosari, apem jagung, tiwul instan, dan tepung jagung alami tanpa bahan pengawet.\n\nPemasaran dilakukan dengan sistem penjualan langsung ke wilayah Yogyakarta, Bandung, dan pasar tradisional. Pembayaran masih dilakukan secara tunai, sementara pada kegiatan pameran telah digunakan barcode sebagai media informasi produk.\n\nSelain usaha olahan pangan, UMKM ini juga mengelola peternakan kambing putih sebanyak 32 ekor dan ayam sebagai usaha pendukung. Dengan pengalaman lebih dari tiga dekade, UMKM ini berkomitmen melestarikan pangan tradisional serta meningkatkan nilai tambah hasil pertanian lokal.",
     image: "/klethik-klethik.jpeg",
     youtubeUrl: "https://www.youtube.com/embed/example1",
-    slug: "program-pemberdayaan-petani-dimulai",
+    slug: "klethik-klethik-ibu-suyatmi",
     location: { lat: -7.8414561, lng: 110.712003 },
     locationName: "Klethik Klethik Ibu Suyatmi",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Klethik+Klethik+IBU+SUYATMI",
