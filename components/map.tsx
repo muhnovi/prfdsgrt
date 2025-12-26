@@ -165,7 +165,7 @@ export default function Map() {
     <section id="wisata" ref={wisataSection} className="py-8 sm:py-12 lg:py-20 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-4">Wisata Desa</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-4">Wisata Dukuh Garotan</h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Klik marker atau pilih dari daftar untuk melihat detail wisata
           </p>
