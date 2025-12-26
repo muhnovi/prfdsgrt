@@ -17,26 +17,30 @@ export default function Hero() {
             <div>
               <p className="text-sm font-semibold text-primary mb-2">🌾 Dukuh Garotan</p>
               <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight">
-                Selamat Datang di Dukuh Kami
+                Selamat Datang 
               </h1>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                Dukuh Garotan adalah desa yang indah dengan keindahan alam dan kekayaan budaya lokal. Kami bangga
+                Dukuh Garotan adalah dukuh yang indah dengan keindahan alam dan kekayaan budaya lokal. Kami bangga
                 menjadi bagian dari warisan budaya Indonesia.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#about"
+                href="https://penduduk.garotanmanunggal.web.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
               >
-                Pelajari Lebih Lanjut
+                Data Penduduk Garotan
               </a>
               <a
-                href="#contact"
+                href="https://sejarah.garotanmanunggal.web.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition-colors"
               >
-                Hubungi Kami
+                Sejarah Garotan
               </a>
             </div>
           </div>
