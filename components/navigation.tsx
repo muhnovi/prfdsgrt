@@ -1,19 +1,18 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react"
+import { Menu, X } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
+  const pathname = usePathname()
 
   useEffect(() => {
     // Tutup mobile menu ketika route berubah
-    setIsOpen(false);
-  }, [pathname]);
+    setIsOpen(false)
+  }, [pathname])
 
   const allNavItems = [
     { label: "Beranda", href: "#home", isLink: false },
@@ -30,62 +29,56 @@ export default function Navigation() {
       isLink: true,
     },
     { label: "Kontak", href: "#contact", isLink: false },
-  ];
+  ]
 
   // Tampilkan hanya Beranda dan Pengaduan di halaman /pengaduan
   const navItems =
     pathname === "/pengaduan"
       ? [allNavItems[0], allNavItems[3]] // Beranda dan Pengaduan di halaman /pengaduan
-      : allNavItems; // Semua menu di halaman lain
+      : allNavItems // Semua menu di halaman lain
 
   const handleNavClick = (href: string) => {
-    setActiveSection(href);
-    const element = document.querySelector(href);
+    setActiveSection(href)
+    const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   const handleSectionClick = (sectionHref: string, label: string) => {
     if (pathname === "/") {
-      handleNavClick(sectionHref);
+      handleNavClick(sectionHref)
     } else {
       // Jika itu menu Beranda, pergi ke "/" tanpa hash
       if (label === "Beranda") {
-        window.location.href = "/";
+        window.location.href = "/"
       } else {
         // Pergi ke halaman utama dan scroll ke section
-        window.location.href = `/${sectionHref}`;
+        window.location.href = `/${sectionHref}`
       }
     }
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/"
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-lg font-bold text-primary-foreground">
-                🏘️
-              </span>
+          <div className="flex items-center gap-3">
+            <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+              <span className="text-2xl">🏘️</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground">
-                Dukuh Garotan
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Kalurahan Bendung, Kapanewon Semin, Kabupaten Gunungkidul
-              </p>
+              <h1 className="text-xl font-bold text-foreground tracking-tight">Dukuh Garotan</h1>
+              <p className="text-xs text-muted-foreground">Kalurahan Bendung, Kapanewon Semin</p>
             </div>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) =>
               item.isLink ? (
                 <a
@@ -93,7 +86,7 @@ export default function Navigation() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-300"
+                  className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-secondary/50 rounded-xl transition-all duration-300"
                 >
                   {item.label}
                 </a>
@@ -101,25 +94,22 @@ export default function Navigation() {
                 <button
                   key={item.href}
                   onClick={() => handleSectionClick(item.href, item.label)}
-                  className={`text-sm font-medium relative transition-colors duration-300 cursor-pointer ${
+                  className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
                     activeSection === item.href && isHomePage
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                      ? "text-primary bg-secondary"
+                      : "text-foreground hover:text-primary hover:bg-secondary/50"
                   }`}
                 >
                   {item.label}
-                  {activeSection === item.href && isHomePage && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary animate-pulse"></span>
-                  )}
                 </button>
-              )
+              ),
             )}
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-all duration-300"
+            className="md:hidden p-2.5 rounded-xl hover:bg-secondary/80 transition-all duration-300"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -127,8 +117,8 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden border-t border-border animate-in fade-in slide-in-from-top-2 duration-300">
-            <div className="space-y-2 px-4 py-4">
+          <div className="md:hidden border-t border-border/50 animate-in fade-in slide-in-from-top-2 duration-300 backdrop-blur-xl">
+            <div className="space-y-1 px-4 py-4">
               {navItems.map((item) =>
                 item.isLink ? (
                   <a
@@ -137,7 +127,7 @@ export default function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-2 rounded-lg text-foreground hover:bg-secondary transition-all duration-300"
+                    className="block px-4 py-3 rounded-xl text-foreground hover:bg-secondary/80 hover:text-primary transition-all duration-300"
                   >
                     {item.label}
                   </a>
@@ -145,20 +135,20 @@ export default function Navigation() {
                   <button
                     key={item.href}
                     onClick={() => handleSectionClick(item.href, item.label)}
-                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-300 ${
+                    className={`block w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${
                       activeSection === item.href && isHomePage
-                        ? "bg-green-200 text-foreground font-medium"
-                        : "text-foreground hover:bg-secondary"
+                        ? "bg-secondary text-primary font-medium"
+                        : "text-foreground hover:bg-secondary/80 hover:text-primary"
                     }`}
                   >
                     {item.label}
                   </button>
-                )
+                ),
               )}
             </div>
           </div>
         )}
       </div>
     </nav>
-  );
+  )
 }

@@ -5,6 +5,7 @@ import Navigation from "@/components/navigation"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Facilities from "@/components/facilities"
+import BeritaTerkini from "@/components/berita-terkini"
 import News from "@/components/news"
 import Map from "@/components/map"
 import Contact from "@/components/contact"
@@ -25,6 +26,7 @@ export default function Home() {
       <Hero />
       <About />
       <Facilities />
+      <BeritaTerkini />
       <News />
       <Map />
       <Contact />

@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
 import NewsDetailModal from "../components/news-detail-model"
-import { type NewsItem, newsData } from "@/lib/news-data"
+import { type NewsItem, newsData } from "@/lib/umkm-data"
 
 interface NewsProps {
   initialNewsSlug?: string | null
@@ -41,12 +41,17 @@ export default function News({ initialNewsSlug }: NewsProps) {
 
   return (
     <>
-      <section id="news" className="py-20 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Umkm Dukuh Garotan</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Informasi terbaru seputar kegiatan UMKM di Dukuh Garotan serta lokasi usaha mereka.
+      <section id="news" className="py-24 sm:py-32 bg-gradient-to-b from-background to-secondary/20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-4">
+              <span className="text-sm font-medium text-primary">UMKM Lokal</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+              UMKM Dukuh Garotan
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Informasi terbaru seputar kegiatan UMKM di Dukuh Garotan serta lokasi usaha mereka
             </p>
           </div>
 
@@ -54,33 +59,54 @@ export default function News({ initialNewsSlug }: NewsProps) {
             {news.map((item, index) => (
               <article
                 key={index}
-                className="bg-background rounded-xl overflow-hidden hover:shadow-lg transition-shadow border border-border"
+                className="group bg-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-border hover:scale-[1.02]"
               >
-                <div className="aspect-video overflow-hidden bg-muted">
+                <div className="aspect-video overflow-hidden bg-muted relative">
                   <img
-                    src={item.image || "/placeholder.svg?height=200&width=400&query=berita desa"}
+                    src={item.image || "/placeholder.svg?height=300&width=500&query=umkm desa"}
                     alt={item.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-6">
-                  <p className="text-sm text-primary font-semibold mb-2">{item.date}</p>
-                  <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3">{item.description}</p>
-                  <button
-                    onClick={() => openDetail(item)}
-                    className="mt-4 inline-block text-primary font-semibold hover:underline cursor-pointer"
-                  >
-                    Baca Selengkapnya →
-                  </button>
-                  {item.location && (
+                <div className="p-6 sm:p-8">
+                  <p className="text-sm text-primary font-semibold mb-3">{item.date}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm sm:text-base line-clamp-3 leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                  <div className="flex flex-col gap-3">
                     <button
-                      onClick={() => window.open(item.mapsUrl, "_blank")}
-                      className="mt-4 inline-block text-primary font-semibold hover:underline cursor-pointer"
+                      onClick={() => openDetail(item)}
+                      className="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all cursor-pointer group/btn"
                     >
-                      Lihat Lokasi →
+                      Baca Selengkapnya
+                      <svg
+                        className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
                     </button>
-                  )}
+                    {item.location && (
+                      <button
+                        onClick={() => window.open(item.mapsUrl, "_blank")}
+                        className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all cursor-pointer group/btn"
+                      >
+                        <MapPin className="w-4 h-4" />
+                        Lihat Lokasi
+                      </button>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
@@ -94,33 +120,44 @@ export default function News({ initialNewsSlug }: NewsProps) {
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
                   {news.map((item, index) => (
-                    <div key={index} className="w-full flex-shrink-0">
-                      <article className="bg-background rounded-xl overflow-hidden border border-border">
+                    <div key={index} className="w-full flex-shrink-0 px-2">
+                      <article className="bg-card rounded-3xl overflow-hidden border border-border shadow-lg">
                         <div className="aspect-video overflow-hidden bg-muted">
                           <img
-                            src={item.image || "/placeholder.svg?height=200&width=400&query=berita desa"}
+                            src={item.image || "/placeholder.svg?height=300&width=500&query=umkm desa"}
                             alt={item.title}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div className="p-6">
-                          <p className="text-sm text-primary font-semibold mb-2">{item.date}</p>
+                          <p className="text-sm text-primary font-semibold mb-3">{item.date}</p>
                           <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2">{item.title}</h3>
-                          <p className="text-muted-foreground text-sm line-clamp-3">{item.description}</p>
-                          <button
-                            onClick={() => openDetail(item)}
-                            className="mt-4 inline-block text-primary font-semibold hover:underline cursor-pointer"
-                          >
-                            Baca Selengkapnya →
-                          </button>
-                          {item.location && (
+                          <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{item.description}</p>
+                          <div className="flex flex-col gap-3">
                             <button
-                              onClick={() => window.open(item.mapsUrl, "_blank")}
-                              className="mt-4 inline-block text-primary font-semibold hover:underline cursor-pointer"
+                              onClick={() => openDetail(item)}
+                              className="inline-flex items-center text-primary font-semibold gap-2 cursor-pointer"
                             >
-                              Lihat Lokasi →
+                              Baca Selengkapnya
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                              </svg>
                             </button>
-                          )}
+                            {item.location && (
+                              <button
+                                onClick={() => window.open(item.mapsUrl, "_blank")}
+                                className="inline-flex items-center text-accent font-semibold gap-2 cursor-pointer"
+                              >
+                                <MapPin className="w-4 h-4" />
+                                Lihat Lokasi
+                              </button>
+                            )}
+                          </div>
                         </div>
                       </article>
                     </div>
@@ -130,7 +167,7 @@ export default function News({ initialNewsSlug }: NewsProps) {
 
               <button
                 onClick={handlePrevious}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary text-white rounded-full p-2 hover:bg-primary/80 transition-colors z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary text-primary-foreground rounded-full p-3 hover:bg-primary/90 hover:scale-110 transition-all shadow-xl z-10"
                 aria-label="Berita sebelumnya"
               >
                 <ChevronLeft size={24} />
@@ -138,19 +175,19 @@ export default function News({ initialNewsSlug }: NewsProps) {
 
               <button
                 onClick={handleNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary text-white rounded-full p-2 hover:bg-primary/80 transition-colors z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary text-primary-foreground rounded-full p-3 hover:bg-primary/90 hover:scale-110 transition-all shadow-xl z-10"
                 aria-label="Berita selanjutnya"
               >
                 <ChevronRight size={24} />
               </button>
 
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center gap-2 mt-8">
                 {news.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`h-2 rounded-full transition-all ${
-                      index === currentIndex ? "bg-primary w-8" : "bg-muted-foreground w-2"
+                      index === currentIndex ? "bg-primary w-8" : "bg-muted-foreground/40 w-2 hover:bg-muted-foreground"
                     }`}
                     aria-label={`Lihat berita ${index + 1}`}
                   />
