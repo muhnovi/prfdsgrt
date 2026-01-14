@@ -24,7 +24,7 @@ export default function About() {
             <span className="text-sm font-medium text-primary">Tentang Kami</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-            Tentang Dukuh Garotan
+            Tentang Padukuhan Garotan
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Mengenal lebih dekat sejarah, budaya, dan kehidupan masyarakat desa kami di Gunung Kidul
@@ -35,7 +35,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
           <div className="relative group">
             <img
-              src="/traditional-indonesian-village-in-yogyakarta-mount.jpg"
+              src="/icon.png"
               alt="Budaya Desa"
               className="w-full rounded-3xl shadow-2xl group-hover:scale-[1.02] transition-transform duration-500"
             />
