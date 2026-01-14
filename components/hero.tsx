@@ -74,7 +74,7 @@ export default function Hero() {
           <div className="relative animate-slide-in-up" style={{ animationDelay: "0.2s" }}>
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/beautiful-village-landscape-with-traditional-house.jpg"
+                src="/icon.png"
                 alt="Desa Bendung"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
